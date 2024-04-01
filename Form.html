@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student Form</title>
+    <style>
+      body {
+        border: 3px solid black;
+        width: 40%;
+        height: 5%;
+        padding: 10px;
+        margin: auto;
+        text-align: left;
+        background-color: aquamarine;
+      }
+
+      input[type=text],
+        select {
+            padding: 4px 5px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 5%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+     .button{
+        text-align: center;
+    }
+
+     sup {
+        color: red;
+      }
+
+      button:hover {
+            background-color: blueviolet;
+
+        }
+
+        .invalid {
+            border: 1px solid red !important;
+        }
+
+        .noDisplay {
+            display: none;
+        }
+    </style>
+  </head>
+  <body>
+    <center>
+      <h3><span style="font-size: 50px">&#128221;</span>STUDENT FORM</h3>
+    </center>
+    <form id="studentForm">
+      <div>
+        <label style="width: 20%">First name:<sup>*</sup></label>
+        <input style="width: 30%" type="text" id="firstName" placeholder="Enter your firstname" onfocus="removeError()"/>
+        <small style="color: red;" id="fnErrorMsg" class="noDisplay">First Name is required</small>
+      </div>
+      <div>
+        <label style="width: 20%">Last name:<sup>*</sup></label>
+        <input style="width: 30%" type="text" id="lastName" placeholder="Enter your lastname" onfocus="removeError()"/>
+        <small style="color: red;" id="lnErrorMsg" class="noDisplay">Last Name is required</small>
+      </div>
+
+      <div>
+        <label style="width: 20%">Age:<sup>*</sup></label>
+        <input style="width: 30%" type="text" id="age" placeholder="Enter your age" maxlength="2" pattern="[0-9]{2}" onfocus="removeError()"/>
+        <small style="color: red;" id="ageErrorMsg" class="noDisplay">Age is required</small>
+      </div>
+
+      <div>
+        <label style="width: 20%;">Gender:<sup>*</sup></label>
+        <input type="radio" name="gender" id="gender" value="male" />
+        <label for="male">male</label>
+        <input type="radio" name="gender" id="gender" value="female" />
+        <label for="female">female</label>
+      </div>
+
+      <div>
+        <label>Class:<sup>*</sup></label>
+        <select id="class" name="class">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select><br /><br />
+      </div>
+
+      <div>
+        <label style="width: 20%;">State:<sup>*</sup></label>
+        <select style="width: 30%;" id="state" name="state">
+            <option value="">Select State</option>
+            <option value="Jharkhand">jharkhand</option>
+            <option value="Maharastra">maharastra</option>
+            <option value="Uttarpradesh">uttarpradesh</option>
+            <option value="Goa">Goa</option>
+        </select><br /><br />
+      </div>
+
+      <div>
+        <label style="width: 20%">Address:<sup>*</sup></label>
+        <textarea style="width: 30%" id="address" placeholder="Enter your address"></textarea><br /><br />
+      </div>
+
+      <div> 
+        <label style="width: 20%">Pin:<sup>*</sup></label>
+        <input style="width: 30%" type="text" id="pin" maxlength="6" placeholder="Address Pin"/><br /><br />
+      </div>
+
+      <div class="button">
+        <button type="button" onclick="formSubmit()">Submit</button>
+        <button type="button" onclick="formReset()">Reset</button>
+      </div>
+    </form>
+
+    <script>
+
+        let fnCtr = document.getElementById("firstName")
+        let fnErrorCtr = document.getElementById("fnErrorMsg")
+
+        let lnCtr = document.getElementById("lastName")
+        let lnErrorCtr = document.getElementById("lnErrorMsg")
+
+        let ageCtr = document.getElementById("age")
+        let ageErrorCtr = document.getElementById("ageErrorMsg")
+
+      function formReset() {
+        document.getElementById("studentForm").reset();
+      }
+
+      function formSubmit() {
+        let firstName = fnCtr.value;
+        let lastName = lnCtr.value;
+        let age = ageCtr.value;
+
+        if(firstName == '' || firstName == undefined){
+          fnCtr.classList.add('invalid');
+          fnErrorCtr.classList.remove('noDisplay');
+        }else if(lastName == '' || lastName == undefined){  
+          lnCtr.classList.add('invalild');
+          lnErrorCtr.classList.remove('noDisplay');
+        }else if(age == '' || age == undefined){
+          ageCtr.classList.add('invalid');
+          ageErrorCtr.classList.remove('noDisplay');
+        }
+
+      }
+      
+        function removeError() {
+            fnCtr.classList.remove('invalid');
+            fnErrorCtr.classList.add('noDisplay');
+
+            lnCtr.classList.remove('invalid');
+            lnErrorCtr.classList.add('noDisplay');
+
+            ageCtr.classList.remove('invalid');
+            ageErrorCtr.classList.add('noDisplay');
+        }
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal</title>
+    <style>
+        body {
+            border: 3px solid black;
+            width: 40%;
+            height: 5%;
+            padding: 10px;
+            margin: auto;
+            text-align: left;
+        }
+
+        .button {
+            text-align: center;
+        }
+
+        input[type=text],
+        select {
+            padding: 4px 5px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 5%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        button {
+            background-color: rgb(133, 201, 125);
+
+        }
+
+        button:hover {
+            background-color: blueviolet;
+
+        }
+
+        sup {
+            color: red;
+        }
+
+        .invalid {
+            border: 1px solid red !important;
+        }
+
+        .noDisplay {
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <center>
+        <h1><span style='font-size:35px;'>&#128223;</span> Student Registration </h1>
+    </center>
+
+
+    <form id="studentForm">
+        <p class="solid">
+        <div>
+            <label style="width: 20%;">First name:<sup>*</sup></label>
+            <input style="width: 30%;" type="text" id="firstName" placeholder="Enter First name"
+                onfocus="removeErrorFN()">
+            <small style="color: red;" id="fnErrorMsg" class="noDisplay">First Name required.</small>
+
+            <label style="width: 20%;">Last name:<sup>*</sup></label>
+            <input style="width: 30%;" type="text" id="lastName" placeholder="Enter last name">
+        </div>
+        <div>
+            <label style="width: 20%;">Age:<sup>*</sup></label> <input style="width: 30%;" type="text" maxlength="2"
+                pattern="[0-9]{2}" id="Age" placeholder="Enter Age">
+
+            <label style="width: 20%;">Gender:<sup>*</sup></label>
+            <input type="radio" id="Gender" name="Gender" value="male">
+            <label for="male">male</label>
+            <input type="radio" id="Gender" name="Gender" value="female">
+            <label for="female">female</label>
+        </div>
+        <div>
+            <label for="Class">Class:<sup>*</sup></label>
+            <select name="Class" id="class">
+                <option disabled selected value="none">Select</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+            </select>
+        </div>
+        <div>
+            <label> Address:<sup>*</sup></label><br>
+            <textarea name="" id="address" cols="30" rows="0" placeholder="Enter Address"></textarea>
+        </div>
+        <div>
+            <label style="width: 20%;">State:<sup>*</sup></label>
+            <select style="width: 30%;" name="state" id="state">
+                <option value="">Select State</option>
+                <option value="Jharkhand">Jharkhand</option>
+                <option value="Ranchi">Ranchi</option>
+            </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+            <label style="width: 20%;">Pin:<sup>*</sup></label>
+            <input style="width: 30%;" type="text" id="Pin" maxlength="6" placeholder="Enter pin">
+        </div>
+
+        <div class="button">
+            <button type="button" onclick="formSubmit()"> Submit </button>
+            <button type="button" onclick="formReset()"> Reset</button>
+        </div>
+        </p>
+    </form>
+
+    <script>
+
+        // Catch control
+        let fnCtr = document.getElementById("firstName");
+        let fnErrorCtr = document.getElementById("fnErrorMsg");
+
+        function formReset() {
+            document.getElementById("studentForm").reset();
+        }
+
+        function formSubmitWithAlert() {
+            let firstName = fnCtr.value;
+            let lastName = document.getElementById("lastName").value;
+            let studentAge = document.getElementById("Age").value;
+            let studentGender = document.getElementById("Gender").value;
+            let studentClass = document.getElementById("class").value;
+            let studentAddress = document.getElementById("address").value;
+            let State = document.getElementById("state").value;
+            let pin = document.getElementById("Pin").value;
+
+            if (firstName == "" || firstName == undefined) {
+                alert("First name required");
+                return;
+            }
+
+            else if (lastName == "" || lastName == undefined) {
+                alert("last name required");
+                return;
+            }
+            else if (studentClass == "" || studentClass == undefined) {
+                alert("class required");
+                return;
+            }
+            else if (studentAddress == "" || studentAddress == undefined) {
+                alert("Address required");
+                return;
+            }
+
+            else if (studentAge == "" || studentAge == undefined) {
+                alert("student age required");
+                return;
+            }
+
+            else if (studentGender == "" || studentGender == undefined) {
+                alert("student Gender required");
+                return;
+            }
+
+            else if (State == "" || State == undefined) {
+                alert("State required");
+                return;
+            }
+
+            else if (pin == "" || pin == undefined) {
+                alert("Pin required");
+                return;
+            }
+            else {
+                alert("\nFirstName : " + firstName + "\nLastName : " + lastName + "\nAge : " + studentAge +
+                    "\nGender : " + studentGender + "\nclass :" + studentClass + "\nstudentAddress : " + studentAddress + "\nState : " + State + "\nPin : " + pin);
+
+
+            }
+        }
+
+        function formSubmit() {
+            // Extract value from control
+            let firstName = document.getElementById("firstName").value;
+            let lastName = document.getElementById("lastName").value;
+            let studentAge = document.getElementById("Age").value;
+            let studentGender = document.getElementById("Gender").value;
+            let studentClass = document.getElementById("class").value;
+            let studentAddress = document.getElementById("address").value;
+            let State = document.getElementById("state").value;
+            let pin = document.getElementById("Pin").value;
+
+
+            if (firstName == "" || firstName == undefined) {
+                fnCtr.classList.add('invalid');
+                fnErrorCtr.classList.remove('noDisplay');
+            }
+        }
+
+        // first name focus event
+        function removeErrorFN() {
+            fnCtr.classList.remove('invalid');
+            fnErrorCtr.classList.add('noDisplay');
+        }
+
+    </script>
+
+
+</body>
+
+</html>

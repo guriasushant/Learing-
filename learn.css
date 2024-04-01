@@ -1,0 +1,26 @@
+body{
+    background-image: url("luffy.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+}
+h2{
+    color: rgb(202, 249, 33);
+    font-family: "press Start 2p", "consolas";
+}
+p{
+    background-color:white;
+    color: blueviolet;
+    border-style:outset;
+    padding: 10px;
+}
+.even{
+    background-color: black;
+    color: tomato;
+    border-color: yellow;
+}
+.odd{
+    background-color: aqua;
+    color: black;
+    border-color:tomato;
+}
